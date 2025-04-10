@@ -9,7 +9,6 @@ export const addMovie = (payload) => MovieCollection.create(payload);
 export const updateMovie = async (_id, payload, options = {}) => {
   const { upsert } = options;
   const rawResult = await MovieCollection.findOneAndUpdate({ _id }, payload, {
-    new: true,
     upsert,
     includeResultMetadata: true,
   });

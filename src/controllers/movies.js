@@ -41,14 +41,7 @@ export const getMoviesByIdController = async (req, res) => {
   });
 };
 export const addMovieController = async (req, res) => {
-  try {
-    await movieAddSchema.validateAsync(req.body, {
-      abortEarly: false,
-    });
-  } catch (error) {
-    throw createHttpError(400, error.message);
-  }
-
+  const data = await addMovie(req.body);
   res.status(201).json({
     status: 201,
     message: 'Successfully add movie',
